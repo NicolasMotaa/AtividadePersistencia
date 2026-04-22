@@ -33,6 +33,15 @@ public class RestauranteView {
                 System.out.println("R$"+item.getValor());
                 System.out.println("----------------");
             }
+    }
+    public void mostrarMenu(){
 
+        System.out.println("MENU");
+        System.out.println("----------------");
+        System.out.println("Digite:");
+        System.out.println("1 -> Adicionar prato ou bebida ao cardapio");
+        System.out.println("2 -> Fazer pedido");
+        System.out.println("3 -> Ler cardápio");
+        System.out.println("0 -> Fechar programa");
     }
 }

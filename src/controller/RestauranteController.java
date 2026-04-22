@@ -16,11 +16,12 @@ public class RestauranteController {
 
     public void laco() {
         while (loop) {
-
+            view.mostrarMenu();
             switch (view.lerInt()) {
                 case 1 -> criarItem();
                 case 2 -> fazerPedido();
                 case 3 -> listarItens();
+                case 0 -> fechar();
                 default -> view.exibirMsg("selecione uma opcao valida");
             }
         }
@@ -54,6 +55,10 @@ public class RestauranteController {
 
     void listarItens() {
         view.listarItens(service.retornarCardapio());
+    }
+
+    void fechar(){
+        this.loop = false;
     }
 }
 
