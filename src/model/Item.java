@@ -14,6 +14,15 @@ public class Item {
         this.valor = valor;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", valor= R$" + valor +
+                '}';
+    }
+
     public String getNome() {
         return nome;
     }

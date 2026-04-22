@@ -17,7 +17,7 @@ public class RestauranteView {
         return input.nextLine();
     }
     public double lerValor(){
-        return input.nextDouble();
+        return Double.parseDouble(input.nextLine());
     }
     public int lerInt(){
         return input.nextInt();
@@ -28,9 +28,7 @@ public class RestauranteView {
             System.out.println("Cardápio");
             System.out.println("----------------");
             for(Item item: itens){
-                System.out.println(item.getNome());
-                System.out.println(item.getDescricao());
-                System.out.println("R$"+item.getValor());
+                System.out.println(item.toString());
                 System.out.println("----------------");
             }
     }
