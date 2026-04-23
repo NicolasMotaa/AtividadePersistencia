@@ -16,36 +16,35 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class RestauranteRepository {
-     Map<String, Item> cardapio = new HashMap<>();
-     Map<Integer, Pedido> pedidos = new HashMap<>();
+    Map<String, Item> cardapio = new HashMap<>();
+    Map<Integer, Pedido> pedidos = new HashMap<>();
     private final AtomicInteger id = new AtomicInteger(0);
 
-    public Item saveItem(Item i){
+    public Item saveItem(Item i) {
         cardapio.put(i.getNome(), i);
         return i;
     }
 
-    public void createJSONPedidos(){
+    public void createJSONPedidos() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 
         Path path = Path.of("pedidos.json");
-        try (BufferedWriter writer = Files.newBufferedWriter(path)){
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             gson.toJson(pedidos, writer);
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Não deu certo, querido... (erro ao salvar arquivo)");
         }
     }
-    public void createJSONCardapio(){
+
+    public void createJSONCardapio() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 
         Path path = Path.of("cardapio.json");
-        try (BufferedWriter writer = Files.newBufferedWriter(path)){
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             gson.toJson(cardapio, writer);
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Não deu certo, querido... (erro ao salvar arquivo)");
         }
     }
@@ -55,9 +54,11 @@ public class RestauranteRepository {
         Gson gson = new Gson();
 
         if (Files.exists(path)) {
+
             try (BufferedReader reader = Files.newBufferedReader(path)) {
 
-                Type type = new TypeToken<Map<Integer, Pedido>>() {}.getType();
+                Type type = new TypeToken<Map<Integer, Pedido>>() {
+                }.getType();
 
                 pedidos = gson.fromJson(reader, type);
 
@@ -75,12 +76,16 @@ public class RestauranteRepository {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
+        } else {
+            createJSONPedidos();
+            System.out.println("arquivo inexistente. Novo pedidos.json criado");
         }
+
     }
 
     public void readJSONCardapio(Path path) {
         Gson gson = new Gson();
-        if (Files.exists(path)){
+        if (Files.exists(path)) {
             try (BufferedReader reader = Files.newBufferedReader(path)) {
 
                 Type type = new TypeToken<Map<String, Item>>() {
@@ -92,20 +97,22 @@ public class RestauranteRepository {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-        }else{
+        } else {
             createJSONCardapio();
-            System.out.println("arquivo inexistente. Novo cardapio.json criado");}
+            System.out.println("arquivo inexistente. Novo cardapio.json criado");
+        }
 
     }
-    public List<Item> lerCardapio (){
+
+    public List<Item> lerCardapio() {
         return new ArrayList<>(this.cardapio.values());
     }
 
-    public Item lerItem(String nome){
+    public Item lerItem(String nome) {
         return this.cardapio.get(nome);
     }
 
-    public boolean deletarItem(String nome){
+    public boolean deletarItem(String nome) {
         return cardapio.remove(nome) != null;
     }
 
@@ -114,9 +121,9 @@ public class RestauranteRepository {
     }
 
     public Pedido save(Pedido p) {
-    pedidos.put(this.gerarId(), p);
+        pedidos.put(this.gerarId(), p);
 
-    return p;
+        return p;
     }
 
 

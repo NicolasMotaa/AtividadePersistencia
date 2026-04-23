@@ -25,8 +25,13 @@ public class RestauranteService {
     }
 
     public void criarItem(String nome, String desc, double valor){
-        verificarNome(new Item(nome, desc, valor));
-        repo.saveItem(new Item(nome, desc, valor));
+        try{
+            verificarNome(new Item(nome, desc, valor));
+            repo.saveItem(new Item(nome, desc, valor));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Falha por item já cadastrado. Tente novamente.");
+
+        }
     }
 
     public void verificarNome(Item item){
