@@ -1,6 +1,5 @@
 package controller;
 
-import model.Item;
 import service.RestauranteService;
 import view.RestauranteView;
 
@@ -20,6 +19,8 @@ public class RestauranteController {
     private boolean loop = true;
 
     public void laco() {
+        service.carregarCardapio();
+        service.carregarPedidos();
         while (loop) {
             view.mostrarMenu();
             switch (view.lerInt()) {
@@ -45,7 +46,7 @@ public class RestauranteController {
     }
 
     void fazerPedido() {
-        Map<Item, Integer> mapa = new HashMap<>();
+        Map<String, Integer> mapa = new HashMap<>();
         listarItens();
         boolean laco = true;
         while (laco) {
@@ -54,7 +55,7 @@ public class RestauranteController {
             String nome = view.lerTexto();
             view.exibirMsg("digite a quantidade desejada");
             int quantidade = view.lerInt();
-            mapa.put(service.buscarItem(nome), quantidade);
+            mapa.put(nome, quantidade);
             view.exibirMsg("digite 0 para sair ou outro numero para solicitar novo item");
             if (view.lerInt() == 0) {
                 laco = false;
@@ -70,6 +71,9 @@ public class RestauranteController {
 
     void fechar(){
         this.loop = false;
+        service.salvarPedidos();
+        service.salvarCardapio();
+        view.exibirMsg("Adeus...");
     }
 }
 

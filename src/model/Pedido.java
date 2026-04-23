@@ -3,35 +3,13 @@ package model;
 import java.util.Map;
 
 public class Pedido {
-    int id;
-    Map<Item, Integer> itens;
+    Map<String, Integer> itens;
     double valorTotal = 0;
 
-    public Pedido(int id, Map<Item, Integer> itens) {
-        this.id = id;
+    public Pedido( Map<String, Integer> itens, double valor) {
+
         this.itens = itens;
-        calcularValor();
-    }
-
-    public void calcularValor() {
-        this.itens.forEach((chave, valor) ->
-                this.valorTotal += chave.getValor() * valor);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Map<Item, Integer> getItens() {
-        return itens;
-    }
-
-    public void setItens(Map<Item, Integer> itens) {
-        this.itens = itens;
+        this.valorTotal = valor;
     }
 
     public double getValorTotal() {

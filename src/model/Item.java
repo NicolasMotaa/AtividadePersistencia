@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 /**
  * pratos, bebidas do cardápio
  */
@@ -45,5 +47,17 @@ public class Item {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == null || getClass() != object.getClass()) return false;
+        Item item = (Item) object;
+        return Objects.equals(nome, item.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(nome);
     }
 }

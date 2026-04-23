@@ -5,7 +5,7 @@ import view.RestauranteView;
 
 
 public class Run {
-    static void main(String[] args) {
+    public static void main(String[] args) {
 
         RestauranteRepository repo = new RestauranteRepository();
         RestauranteService service = new RestauranteService(repo);
