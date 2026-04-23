@@ -1,0 +1,26 @@
+{
+  "1": {
+    "itens": {
+      "fe": 2
+    },
+    "valorTotal": 88.0
+  },
+  "2": {
+    "itens": {
+      "tila": 1
+    },
+    "valorTotal": 10.0
+  },
+  "3": {
+    "itens": {
+      "cama": 4
+    },
+    "valorTotal": 396.0
+  },
+  "4": {
+    "itens": {
+      "fe": 1
+    },
+    "valorTotal": 44.0
+  }
+}

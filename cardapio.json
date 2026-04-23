@@ -1,0 +1,22 @@
+{
+  "maca": {
+    "nome": "maca",
+    "descricao": "rrao",
+    "valor": 12.0
+  },
+  "cama": {
+    "nome": "cama",
+    "descricao": "rao",
+    "valor": 99.0
+  },
+  "fe": {
+    "nome": "fe",
+    "descricao": "ijoada",
+    "valor": 44.0
+  },
+  "tila": {
+    "nome": "tila",
+    "descricao": "pia",
+    "valor": 10.0
+  }
+}
